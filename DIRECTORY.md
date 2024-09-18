@@ -17,6 +17,10 @@
   * [Speedconversion](./Conversions/SpeedConversion.php)
 
 ## Datastructures
+  * Avltree
+    * [Avltree](./DataStructures/AVLTree/AVLTree.php)
+    * [Avltreenode](./DataStructures/AVLTree/AVLTreeNode.php)
+    * [Treetraversal](./DataStructures/AVLTree/TreeTraversal.php)
   * Disjointsets
     * [Disjointset](./DataStructures/DisjointSets/DisjointSet.php)
     * [Disjointsetnode](./DataStructures/DisjointSets/DisjointSetNode.php)
@@ -25,6 +29,9 @@
   * [Queue](./DataStructures/Queue.php)
   * [Singlylinkedlist](./DataStructures/SinglyLinkedList.php)
   * [Stack](./DataStructures/Stack.php)
+  * Trie
+    * [Trie](./DataStructures/Trie/Trie.php)
+    * [Trienode](./DataStructures/Trie/TrieNode.php)
 
 ## Graphs
   * [Bellmanford](./Graphs/BellmanFord.php)
@@ -114,11 +121,13 @@
   * Conversions
     * [Conversionstest](./tests/Conversions/ConversionsTest.php)
   * Datastructures
+    * [Avltreetest](./tests/DataStructures/AVLTreeTest.php)
     * [Disjointsettest](./tests/DataStructures/DisjointSetTest.php)
     * [Doublylinkedlisttest](./tests/DataStructures/DoublyLinkedListTest.php)
     * [Queuetest](./tests/DataStructures/QueueTest.php)
     * [Singlylinkedlisttest](./tests/DataStructures/SinglyLinkedListTest.php)
     * [Stacktest](./tests/DataStructures/StackTest.php)
+    * [Trietest](./tests/DataStructures/TrieTest.php)
   * Graphs
     * [Bellmanfordtest](./tests/Graphs/BellmanFordTest.php)
     * [Breadthfirstsearchtest](./tests/Graphs/BreadthFirstSearchTest.php)
