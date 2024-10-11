@@ -474,11 +474,13 @@ class SplayTreeTest extends TestCase
         $expectedSize = $treeSize - count($randomNodesToDelete);
 
         foreach ($randomNodesToDelete as $key) {
-            $splayTree->search($key);       // will splay the key to the root before deletion
-            $splayTree->delete($splayTree->getRoot()->key);
+            $isFound = $splayTree->isFound($key);   // splay the key to the root before deletion
+            $this->assertTrue($isFound, "Node with key $key is not present for deletion.");
 
-            $isFound = $splayTree->isFound($key);
-            $this->assertFalse($isFound, "Node with key $key was not deleted.");
+            $rootKey = $splayTree->getRoot()->key;
+            $this->assertEquals($rootKey, $key, "Target key was not splayed to root correctly.");
+
+            $splayTree->delete($splayTree->getRoot()->key);
         }
 
         $this->assertEquals(
