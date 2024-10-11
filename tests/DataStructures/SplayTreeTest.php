@@ -463,9 +463,15 @@ class SplayTreeTest extends TestCase
         $splayTree = new SplayTree($arrayData);
         $treeSize = $splayTree->size();
 
+        // pick randomly a number of nodes to delete within the arrayData
         $numberOfNodesToDelete = rand(1, count($arrayData));
 
+        // pick randomly some nodes to delete by their keys
         $randomNodesToDelete = array_rand($arrayData, $numberOfNodesToDelete);
+
+        $randomNodesToDelete = is_array($randomNodesToDelete)
+            ? $randomNodesToDelete
+            : [$randomNodesToDelete];
 
         for ($i = 0; $i < count($randomNodesToDelete); $i++) {
             $splayTree->delete($randomNodesToDelete[$i]);
