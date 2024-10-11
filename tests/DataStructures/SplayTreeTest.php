@@ -457,30 +457,32 @@ class SplayTreeTest extends TestCase
     {
         $arrayData = [200 => "Value 200", 150 => "Value 150", 170 => "Value 170",
             250 => "Value 250", 300 => "Value 300", 360 => "Value 360", 230 => "Value 230",
-            240 => "Value 240", 220 => "Value 220", 50 => "Value 50", 28 => "Value 28", 164 => "Value 164",
+            240 => "Value 240", 220 => "Value 220", 50 => "Value 50", 28 => "Value 28",
+            164 => "Value 164", 321 => "Value 321", 40 => "Value 40"
         ];
 
         $splayTree = new SplayTree($arrayData);
         $treeSize = $splayTree->size();
 
-        // pick randomly a number of nodes to delete within the arrayData
-        $numberOfNodesToDelete = rand(1, count($arrayData));
-
-        // pick randomly some nodes to delete by their keys
-        $randomNodesToDelete = array_rand($arrayData, $numberOfNodesToDelete);
+        // pick randomly some nodes to delete
+        $randomNodesToDelete = array_rand($arrayData, rand(1, count($arrayData)));
 
         $randomNodesToDelete = is_array($randomNodesToDelete)
             ? $randomNodesToDelete
             : [$randomNodesToDelete];
 
-        for ($i = 0; $i < count($randomNodesToDelete); $i++) {
-            $splayTree->delete($randomNodesToDelete[$i]);
-            $isFound = $splayTree->isFound($randomNodesToDelete[$i]);
-            $this->assertFalse($isFound, "Node with key $randomNodesToDelete[$i] was not deleted.");
+        $expectedSize = $treeSize - count($randomNodesToDelete);
+
+        foreach ($randomNodesToDelete as $key) {
+            $splayTree->search($key);       // will splay the key to the root before deletion
+            $splayTree->delete($splayTree->getRoot()->key);
+
+            $isFound = $splayTree->isFound($key);
+            $this->assertFalse($isFound, "Node with key $key was not deleted.");
         }
 
         $this->assertEquals(
-            $treeSize - $numberOfNodesToDelete,
+            $expectedSize,
             $splayTree->size(),
             "After deletion, total nodes count was not updated correctly."
         );
